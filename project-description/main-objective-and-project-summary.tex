@@ -1,0 +1,29 @@
+\section{Main Objective and Project Summary}
+\label{sec:main-objective-and-project-summary}
+
+Modern distributed systems are written in a plethora of programming
+languages, run on heterogeneous hardware, and across a wide range of
+runtime environments. To meet the interoperability needs of modern
+distributed applications, programmers must often (manually) reduce
+their communication protocols to sequencing CRUD operations (create,
+read, update, delete). This programming style leaves a lot of room for
+error, and leads to components that are ill-composable, and hard to
+test and maintain.
+
+Over time, programming models have emerged to tackle some of the
+challenges inherent in distributed systems.  Today there exist several
+specialized (1) resident libraries and frameworks, (2) dedicated
+programming languages, and (3) cross-language frameworks. Resident (in
+a particular language) libraries and frameworks are ill-usable across
+language barriers. The dedicated programming languages have rarely
+been designed with wide interoperability in mind. Perhaps, it is
+because crossing language barriers is so hard, that modern
+cross-language frameworks offer but a simple abstraction over CRUD ---
+merely enabling cross-language remote procedure calls (RPC).
+
+The more advanced programming models for distributed computing
+\cite{miller2017dist-prog-book} remain language-locked, bound by
+limited interoperability options. My objective is to advance from this
+state of the art; to offer more eloquent means to orchestrate
+heterogeneous components in a distributed system, through programming
+language- and runtime systems engineering.

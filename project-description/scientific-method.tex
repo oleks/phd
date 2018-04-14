@@ -1,0 +1,114 @@
+\section{Scientific Method}
+\label{sec:scientific-method}
+
+The general approach is iterated experimental analysis, engineering,
+and evaluation of tools for programming modern distributed
+applications.  The following subsections, cover the steps involved in
+every such iteration in more detail.
+
+\subsection{Analysis}
+
+The objective of this project is to reduce the engineering effort
+required to build modern, heterogeneous distributed systems. This
+requires a systematic analysis of how such systems are built today,
+and to identify key hurdles in this present-day engineering practice.
+
+Luckily, modern distributed systems software is often open source,
+subject to reversion control, and open bug-tracking. This means that
+both various versions of an application, its past and present hurdles,
+its technical documentation, and an account of its (ongoing)
+development, are often directly available for systematic study. The
+quantity and quality of these resources may vary considerably across
+applications, but far more data is readily available for open-source,
+rather than closed-source applications.
+
+Reviewing source code alone does not always give sufficient insight
+into real-world system diversity, and runtime behaviour --- monitoring
+real-world applications, is an important alleyway for field-work.
+However, this can prove challenging as many such systems are
+commercial in nature, and data about their runtime behaviour may carry
+business value.
+
+Sometimes, real-world workloads can be reliably simulated, based on
+public data about system diversity in real-world applications. For
+instance, the diversity of handheld devices, and associated operating
+systems, that ambitious handheld applications should target, is often
+a public statistic.
+
+\subsection{Engineering}
+
+Based on observations of the hurdles of real-world distributed systems
+programming, I intend to design and implement programming environments
+to try and alleviate some of these. This is a largely creative
+process, requiring a considerable engineering effort in its own right.
+It involves analysing, using, and composing existing programming
+languages, runtime systems, libraries, and frameworks, to form new
+ones.
+
+\subsection{Evaluation}
+
+To verify that the programming environments thus engineered tackle
+some of the above problems, it is imperative to try and re-implement
+the systems studied previously, with the explicit intent to compare
+the implementations, subject to real-world workloads.
+
+One way to do this in the context of a existing application, is by
+setting up a proxy in front of the original service, such that
+requests are funneled to both the original implementation, and the
+experimental one. The response from the experimental implementation is
+logged for analysis, while the user receives the response from the
+original implementation, as before. This is one way to test that an
+experimental implementation meets certain requirements under a
+real-world workload.
+
+However, since the scientific result in question also has to do with
+the necessary engineering effort, there are some human factors that
+have to be taken into account during an evaluation:
+
+\begin{enumerate}
+
+\item A person that has seen, or worked on the original
+implementation, might forego some of the engineering effort during a
+re-implementation in another programming environment, already knowing
+how to meet certain requirements in the original programming
+environment.
+
+\item A person that has not seen any implementation, asked to make
+both, might be affected either way by first using one, or the other
+programming environment.
+
+\item A person that knows the original programming environment, might
+be hindered in quickly understanding the new programming environment,
+or conversely, be better equipped to understand the new programming
+environment, than a person that is familiar with neither.
+
+\end{enumerate}
+
+One way to tackle all of these challenges at once would be to:
+
+\begin{enumerate}
+
+\item Attract a representative number of programmers that do not have
+familiarity with engineering the original application, and are
+familiar with neither programming environment (e.g., university
+students).
+
+\item Split them up into two representative groups, and train each in
+a different programming environment.
+
+\item Present them with the requirements of the original application,
+and ask to implement the original application in the taught
+environment.
+
+\item Finally, train them in the other programming environment, and
+ask them to reimplement the application in the other environment.
+
+\end{enumerate}
+
+This is quite an elaborate level of rigour. A level of rigour seldom
+seen in programming language design, as evidenced by the only recent
+discovery of Evidence-Based Programming-Language Design
+\cite{dagstuhl18061}. However, it does seem to universally address the
+human factors above, and would also provide empirical data on
+in-how-far the programming environments are easy to teach, easy to
+learn, and how error-prone they are for newcomers.

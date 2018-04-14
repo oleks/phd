@@ -1,0 +1,151 @@
+\section{Project Background and Scientific Basis}
+\label{sec:project-background-and-scientific-basis}
+
+Computing is broadly applicable in diverse physical environments.
+
+Recent advances in computer architecture, computer networks, and
+battery technology, have enabled a proliferation of ever more mobile,
+and ever more versatile computational devices; devices that collect
+swathes of data about their surrounding environment, and increasingly
+act upon it. Although smartphones are a prime example of versatile,
+mobile devices, ongoing automation is putting ever more autonomous
+devices in the air \cite{economist2017drones}, on the roads
+\cite{economist2018cars}, on factory floors
+\cite{spiegel2016industrie, spiegel2017industrie}, in the fields
+\cite{ng2017smartfarming}, and into workshops
+\cite{economist2017jets}.
+
+Deciding whether, when, and how to react to the environment, is a
+computational decision that these devices don't always carry the
+computational power, or data to make. To resolve this, they may
+consult nearby, or far-flung, similarly-, or higher-powered devices.
+This makes them resort to coordinating work over network protocols,
+and take part in larger, \emph{distributed applications}.
+
+\medskip
+
+Many modern applications are either inherently distributed (i.e.,
+relying on non-local data), or most efficiently solved in a
+distributed fashion (e.g., by off-loading computation). Distributed
+systems abound, and the need for cunning distributed systems
+programmers is expected to grow in the face of ongoing automation
+\cite{weforum2018futureofjobs}.
+
+Programming distributed applications is still considered hard. This is
+evidenced by the prevalence of Computer Science courses
+\cite{apnes2017notes, morris2017notes} on the matter. What makes it
+fundamentally hard, is the harsh reality of physical distribution:
+Programmers must address the possibilities of occasional network and
+power outages, hardware faults, and software errors; all while staying
+vigilant of the chance of human fault itself.  Furthermore,
+distributed systems are (1) inherently concurrent, (2) should make
+efficient use of local hardware resources, and (3) should be able to
+scale to meet upticks and downticks in demand.
+
+\medskip
+
+Historically, harsh programming conditions have fueled an evolution of
+programming environments; gradually enabling more eloquent ways to
+express application logic, while minimizing opportunities for human
+error. Programmers today have a wealth of tools to choose from, in any
+given programming domain. Being able to choose, and compose existing
+components, is increasingly an essential skill for the successful
+programmer.
+
+Distributed programming is no exception. Various tools have been
+proposed to tackle some of the fundamental challenges outlined above.
+Ranging from specialized libraries and frameworks (e.g., Apache Thrift
+\cite{slee2007thrift}, gRPC \cite{grpc2018}, Orleans
+\cite{bernstein2014orleans}, Akka \cite{akka2018}), to domain-specific
+languages (e.g., Cloud Haskell \cite{epstein2011towards}), to
+full-blown general-purpose distributed programming languages (e.g.,
+Erlang \cite{armstrong2003making}, Emerald
+\cite{black1987distribution}).  These tools tend to be specialized
+implementations of some programming model for distributed computing
+(e.g., remote procedure calls \cite{birrell1984implementing}, the
+actor model \cite{hewitt1973session}, the unified object model
+\cite{black1987distribution}). A thorough categorization of
+present-day tools, and their models is available in
+\cite{miller2017dist-prog-book}.
+
+\medskip
+
+What complicates \emph{modern} distributed applications further, is
+the wealth of choices that programmers have for the non-distributed
+elements of an application. A modern programming model for distributed
+computation must also accommodate for the increasing variety in
+hardware resources, and software installations on the machines
+involved in a distributed application. This aspect is often
+ill-addressed by existing tools.
+
+The standard present-day solution is to use web-based APIs (e.g., a
+REST, or SOAP API). A web-based API offers a fundamental
+request-response messaging abstraction over low-level networking
+protocols. It provides a standardised way to execute create, read,
+update, and delete (CRUD) operations on a remote machine, subject to a
+standardised data interchange format (e.g., based on JSON or XML) for
+sending arguments to, and receiving operation results.
+
+\medskip
+
+Unfortunately, a web-based API is often rather crude: Operations do
+not compose, and there is a general lack of control- and data
+structures; offering a merely sequential, one basic instruction at a
+time, programming model. Such abstractions are rudimentary in
+high-level programming languages, and considered fundamental to
+eloquently programming modern application logic.
+
+This shortcoming can be made up for through libraries and frameworks,
+but usually at the cost of reduced interoperability. Frameworks that
+have instead aimed for wide interoperability, have ended up offering
+few distributed systems abstractions. For instance, Apache Thrift
+\cite{slee2007thrift}, gRPC \cite{grpc2018}, and Babel
+\cite{epperly2012high} cross many language barriers, but when it comes
+to mechanisms for distributed computing, they merely offer remote
+procedure calls (RPC). Distributed systems programming research has
+offered some far richer programming models (e.g., the actor model, the
+unified object model). However, these were rarely designed with wide
+heterogeneity of system components in mind.
+
+\medskip
+
+The aim of this project is to improve upon this state of affairs ---
+to brace some of the more elaborate distributed programming models for
+the heterogeneous nature of modern distributed applications. The
+approach is to attempt to design a programming language that is highly
+interoperable, and yet suitable for tackling the problems inherent in
+distributed computing.
+
+Past developments in programming languages for distributed computing
+have been partially guided by developments in operating systems
+research. For instance, the Eden \cite{almes1985eden} programming
+language leveraged the process abstraction to keep the memory of
+runtime objects separate and portable, while the Emerald programming
+language improved upon this by leveraging the thread abstraction
+instead, leaving it to the programming language to ensure memory
+non-interference \cite{black2007development}.
+
+I hypothesise that there continue to be ways in which operating
+systems and programming languages research can benefit from each
+another. For instance, recent advances in operating systems have
+enabled resource virtualisation at ever finer levels
+\cite{felter2015updated}: a modern distributed system
+\cite{burns2016design} may be composed of heterogeneous components,
+which never-the-less may share the same hardware, and even the same
+operating-system kernel.
+
+However, existing distributed programming languages were designed
+before these advances. As a result, modern systems are often
+configured in an ad-hoc fashion, through an informal processed called
+\emph{orchestration}. Orchestration today happens without the sort of
+static or dynamic support that may be offered by a proper programming
+language (e.g., a type-system).
+
+Conversely, distributed programming languages that aim to support
+heterogeneous components, may be able to leverage present-day
+fine-grained resource virtualisation to achieve the sort of guarantees
+that the programming languages they interoperate with, are otherwise
+too weak to provide.
+
+% This project is at an intersection of operating systems and
+% programming languages research.

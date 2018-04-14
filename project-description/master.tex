@@ -1,0 +1,133 @@
+\documentclass[a4paper]{article}
+
+\usepackage{template}
+
+\usepackage{csquotes}
+\usepackage[defernumbers=true]{biblatex}
+
+% Be more permissive about line breaks in URLs in the bibliography:
+% Credit: https://tex.stackexchange.com/a/134281
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
+\DeclareBibliographyCategory{formally-peer-reviewed}
+\addtocategory{formally-peer-reviewed}{%
+  almes1985eden,%
+  birrell1984implementing,%
+  black1987distribution,%
+  black2007development,%
+  burns2016design,%
+  caliskan2015anonymizing,%
+  caliskan2018when,%
+  epperly2012high,%
+  epstein2011towards,%
+  felter2015updated,%
+  hewitt1973session%
+}
+
+\DeclareBibliographyCategory{lecture-notes-and-theses}
+\addtocategory{lecture-notes-and-theses}{%
+  apnes2017notes,%
+  armstrong2003making,%
+  dagstuhl18061,%
+  miller2017dist-prog-book,%
+  morris2017notes%
+}
+
+\DeclareBibliographyCategory{journalism}
+\addtocategory{journalism}{%
+  economist2018cars,%
+  economist2017drones,%
+  economist2017jets,%
+  ng2017smartfarming,%
+  spiegel2016industrie,%
+  spiegel2017industrie%
+}
+
+\DeclareBibliographyCategory{whitepapers-and-reports}
+\addtocategory{whitepapers-and-reports}{%
+  bernstein2014orleans,%
+  slee2007thrift,%
+  weforum2018futureofjobs%
+}
+
+\DeclareBibliographyCategory{web-sites}
+\addtocategory{web-sites}{%
+  akka2018,%
+  grpc2018%
+}
+
+\addbibresource{references.bib}
+
+\usepackage[numbib]{tocbibind}
+
+\header{%
+  course={In addendum to the Application for Admission \\
+    to the PhD Programme in Natural Sciences},%
+  assignment={PhD Project Description},%
+  authors={Oleks Shturmov \texttt{<olekss@uio.no>}},%
+  affiliation={Department of Informatics\\University of Oslo},%
+  shortAffiliation={IFI/UiO},%
+  date={April 6, 2018}
+}
+
+\newcommand\tm[0]{\textsuperscript{\scriptsize\texttrademark}}
+\newcommand\longref[1]{\ref{#1} (page \pageref{#1})}
+
+\usepackage{etoolbox}
+
+\begin{document}
+
+\maketitle
+
+\input{project-title}
+
+\input{main-objective-and-project-summary}
+
+\input{project-background-and-scientific-basis}
+
+\input{research-questions-and-scientific-challenges}
+
+\input{scientific-method}
+
+\input{ethics}
+
+\input{project-timeline}
+
+\section{References}
+
+\nocite{*}
+
+\printbibliography[%
+  title={Formally Peer-Reviewed},%
+  category=formally-peer-reviewed,%
+  heading=subbibliography%
+]
+
+\printbibliography[%
+  title={Lecture Notes and Theses},%
+  category=lecture-notes-and-theses,%
+  heading=subbibliography%
+]
+
+\printbibliography[%
+  title={Journalism},%
+  category=journalism,%
+  heading=subbibliography%
+]
+
+\printbibliography[%
+  title={Whitepapers \& Reports},%
+  category=whitepapers-and-reports,%
+  heading=subbibliography%
+]
+
+\printbibliography[%
+  title={Web Sites},%
+  category=web-sites,%
+  heading=subbibliography%
+]
+
+\input{signatures}
+
+\end{document}

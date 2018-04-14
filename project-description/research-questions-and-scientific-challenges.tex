@@ -1,0 +1,76 @@
+\section{Research Questions and Scientific Challenges}
+\label{sec:research-questions-and-scientific-challenges}
+
+In general, the research question I would like to answer is:
+
+\begin{center}
+
+Could a further consolidation programming language- and operating
+system research help tackle the challenges of modern distributed
+programming?
+
+\end{center}
+
+\noindent I see the following sub-questions to this question:
+
+\begin{enumerate}
+
+\item What is the extent of hardware and software heterogeneity in
+modern distributed systems? What can we expect of the near future?
+
+\item Is this heterogeneity unavoidable? Is it as big a problem for
+modern distributed systems programming as conjectured in this
+document? If not, why then is distributed programming still considered
+hard?
+
+\item From the point of view of a modern distributed systems
+programmer, what are the possible benefits of a dedicated distributed
+systems programming language? In particular, as opposed to a mere
+standard, or a library or framework, implemented in a existing
+language.
+
+\item In-how-far do existing distributed programming languages deliver
+on the possible benefits above? What could be added to these languages
+to better address the issues inherent in modern distributed
+programming?
+
+\item To address heterogeneity, would it suffice to endow a existing
+distributed programming language with existing options for
+interoperability? For instance, provisioning support for Erlang in
+Babel.
+
+\item If not, what could be added to the existing options for
+interoperability to better support the kind of interoperability needed
+in modern distributed systems programming?
+
+I see the following sub-questions to this question:
+
+\begin{enumerate}
+
+\item General language interoperability is hard; it is a research
+direction in its own right. Is the extent of interoperation needed for
+modern distributed programming, more confined than in the general
+case?
+
+\item Conversely, the challenges inherent in modern distributed
+systems might not be sufficiently addressed by existing
+interoperability options. For instance, with respect to reliability in
+the face of hardware faults and software errors.
+
+\item Operating-system-level virtualisation is emerging as an
+essential ingredient of modern distributed systems. Could OS-level
+virtualisation be leveraged to improve programming-language
+interoperability? For instance, to provide security guarantees that
+select programming languages, or runtime systems otherwise cannot
+provide.
+
+\end{enumerate}
+
+\end{enumerate}
+
+To answer these questions, I will have to analyse the architecture
+existing in real-world distributed systems, implement a large amount
+of software, including extending existing programming languages and
+runtime systems, or implementing new ones, and conduct real-world
+experiments (e.g., to showcase the possible benefits of a distributed
+systems programming language).
