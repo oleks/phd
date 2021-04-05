@@ -1,0 +1,377 @@
+\subsection{Research Questions}
+
+% In a distributed mobile cloud, both data and computation are mobile.
+
+% Without loss of generality, we can refer to the lumps of data and
+% computation thus moving about as ``objects'':
+
+% \begin{definition}[Object]
+
+% An object is a conglomeration of data and computation; a unit of
+% mobility in a distributed mobile cloud.
+
+% \end{definition}
+
+% These objects move about among a collection of ``hosts''.
+
+% \begin{definition}[Host]
+
+% A host is a network-addressable (virtual) machine capable of serving
+% as the location of an object in a distributed mobile cloud. An object
+% is ``located'' at a given host in the sense that its data is stored
+% at, and computation is effectuated on that machine.
+
+% \end{definition}
+
+% When an object is in transit from host to host, no computation can
+% take place.
+
+% \begin{definition}[Distributed Mobile Cloud (cont.)]
+
+% A distributed mobile cloud consists of a number of hosts, where some
+% of them may be physically mobile. The set of available hosts is not
+% fixed, new hosts may appear, existing hosts may disappear, and hosts
+% may temporarily become unavailable.
+
+% \end{definition}
+
+% Although the scientific challenges above focus heavily on the last
+% research objective above (number \ref{objective:evaluate}), the main
+% research questions of this project span all of the research
+% objectives.
+
+Extrapolating from the background studies conducted in this project so
+far, the subject work of this project rests on the following
+hypothesis:
+
+\begin{hypothesis}
+
+\label{hyp:main}
+
+The following characteristics are elementary to eloquent distributed
+mobile cloud programming:
+
+\begin{description}
+
+\item[Location Transparency] --- programmers can remain oblivious to
+the exact location of (parts of) data and computation at runtime.
+
+\item[Resourcefulness] --- program components can maintain some
+relative capability of retrieving data, and performing computation at
+runtime.
+
+\item[Context-Awareness] --- program components can act aware of their
+current execution environment, and react to changes to it.
+
+\item[Coordinated Mobility] --- programmers can guide the runtime on
+when and where it might be best to move data and computation next.
+
+\item[Heterogeneity] --- data and computation can be spread over
+heterogeneous devices, having different computational capabilities and
+software.
+
+\end{description}
+
+\end{hypothesis}
+
+To address elements of this hypothesis in a scientific manner, the
+following research questions address them more concretely.
+
+\bigskip
+
+Many contemporary distributed programming systems draw an explicit
+distinction between local and remote procedure calls. Some however,
+make no such syntactic distinction (e.g.,
+Emerald\cite{emerald:tocs:1988, emerald:tse:1987, emerald:spe:1991},
+Erlang\cite{2003-PhD-Armstrong}), and refer to this characteristic as
+``location transparency''. The eloquence of the presence/absence of
+location transparency has not been backed by scientific evidence.
+
+It would seem however, that the most eloquent approach is somewhere
+in-between: We would like to remain oblivious to the exact location of
+objects, in the face of mobility. However, we also need to keep a tab
+on how these objects move about, so that some physical proximity is
+maintained among them.
+
+\begin{research-question}[Location Transparency and Coordinated Mobility]
+
+How does the presence/absence of location transparency influence the
+eloquence of a programming technology for a distributed mobile cloud?
+If there are drawbacks to location transparency, could some
+coordinated mobility primitives help alleviate them?
+
+\end{research-question}
+
+The set of resources available to any given object in a distributed
+mobile cloud is dynamic. It cannot be determined at compile-time, and
+may change throughout the lifetime of an object. Never-the-less, to
+guarantee a certain level of service, individual objects need a
+certain set of resources to operate.
+
+The needed set of resources can be characterized by the programmer
+(e.g., through their use of specialized programming abstractions). If
+the runtime cannot, or can no longer deliver the necessary resources
+at a given location, it might be worthwhile to move the object
+elsewhere.
+ 
+\begin{research-question}[Resourcefulness, Context-Awareness, and
+Coordinated Mobility]
+
+What are some eloquent means for programmers to characterize the
+resources necessary for the proper functioning of an object in a
+distributed mobile cloud?  Subsequently, how can programmers
+eloquently specify what should happen when those resources cannot, or
+can no longer be delivered at the current object location?
+
+\end{research-question}
+
+The devices providing the computational infrastructure in a
+distributed mobile cloud are highly heterogeneous. They involve
+machines in large, and small data centers, nearby commodity servers,
+physically mobile devices, elements of the mobile network
+infrastructure (e.g., base stations, central
+offices\cite{2016-Central-office-re-architectured-as-a-data-center,
+2020-5g-systems-approach}), among others.  These devices differ in
+both their hardware resources, and their software stacks. Supporting
+object mobility in such a diverse computational infrastructure is
+challenging in its own right.
+
+Furthermore, programmers often would like to use the best tool for
+each part of their job. In particular, a modern digital service is
+often built from components written in a myriad of different
+programming languages. It would be feeble to attempt to deliver a
+single programming language for programming distributed mobile cloud
+applications, in general.  Instead, a language that otherwise
+addresses the characteristics outlined above, should come with good
+language interoperability options. Allowing programmers to employ
+existing components, written in other languages, and to write new
+components in languages most suitable for those components.
+
+\begin{research-question}[Heterogeneity]
+
+How can we eloquently support the execution of heterogeneous software
+across a network of heterogeneous devices, as we see in a distributed
+mobile cloud?
+
+\end{research-question}
+
+% The aforementioned literature will often go on to suggest the design
+% and implementation of a novel programming paradigm, in attempt to
+% address the supposed sources of ineloquence. The suggested programming
+% paradigm may or may not be picked up by the general public, and may or
+% may not reach a certain level of maturity.
+
+% Existing programming paradigms that may address the same source of
+% ineloquence. However, they are also likely to vary by many more
+% factors than the source of ineloquence itself. Hence, we cannot
+% trivially compare them, in terms of how well they fare in addressing
+% the source of ineloquence.
+
+% Instead, we need to employ rapid prototyping, re-design and
+% re-implement these paradigms, such that only a controlled number of
+% factors vary.
+
+% \begin{scientific-challenge}[Design]
+
+% Design programming paradigms in attempt to address the sources of ineloquence 
+
+% This is related to Research Objective \ref{objective:characterize}.
+
+% \end{scientific-challenge}
+
+% \begin{scientific-challenge}[Implementation]
+
+% This is related to Research Objective \ref{objective:implement}.
+
+% \end{scientific-challenge}
+
+% \begin{scientific-challenge}[Evaluation]
+
+% This is related to Research Objective \ref{objective:evaluate}.
+
+% \end{scientific-challenge}
+
+
+% A substantial scientific challenge stems from the desire to evaluate
+% the eloquence of programming technologies. As defined on page
+% \pageref{def:eloquence}, eloquence is a social aspect. As such, it is
+% perhaps best evaluated using methods from the Social Sciences, where
+% we construct falsifiable hypotheses, about how certain societies
+% behave, and subject these hypotheses to empirical evaluation.
+
+% \begin{scientific-challenge}
+% 
+% Representative sample
+% 
+% \end{scientific-challenge}
+% 
+% The fundamental, operating hypothesis of this projects is that:
+% 
+% \begin{hypothesis}
+% 
+% \label{hyp:main}
+% 
+% Programmers need substantial support from the underlying programming
+% environment to eloquently leverage the potential benefits of a
+% distributed cloud infrastructure. In particular, the required support
+% vectors are:
+% 
+% \begin{enumerate}[label={(\alph*)}]
+% 
+% \item \label{hyp:location-transparency} That programmers can remain
+% oblivious to the exact location of (parts of) data and computation at
+% runtime.
+% 
+% \item \label{hyp:resources} That program components can maintain a
+% relative capability of retrieving data, and spawning computation at
+% runtime.
+% 
+% \item \label{hyp:move} That programmers have the capability to guide
+% the runtime on when and where it might be best to move data and
+% computation next.
+% 
+% \item \label{hyp:heterogeneity} That data and computation can be
+% spread over heterogeneous devices, having different computational
+% capabilities, powered by heterogeneous software.
+% 
+% \end{enumerate}
+% 
+% \end{hypothesis}
+% 
+% This hypothesis will be subject to evaluation, and perhaps, evolution,
+% throughout the project.
+% 
+% \subsection{Research Questions}
+% 
+% The research questions are organized such that they successively
+% address the elements of Hypothesis \ref{hyp:main} above.
+% 
+% Sub-hypothesis \ref{hyp:location-transparency} refers to a design
+% principle that has been widely employed in programming technologies
+% for distributed systems before: \emph{location transparency}[?].
+% Unfortunately, related scientific literature has, at best, presented
+% anecdotal evidence in favor of it, and it has also been anecdotally
+% criticised[?].
+% 
+% \begin{research-question}[Location Transparency]
+% 
+% How does location transparency contribute to the eloquence of a
+% programming technology for a distributed cloud?
+% 
+% \end{research-question}
+% 
+% Sub-hypothesis \ref{hyp:resources} refers to the ability of
+% programmers to remain aware of the resources available to them. Either
+% local resources, or resources available over the network. This too
+% refers to a design principle that has been widely prevalent in
+% academic literature: \emph{resource-aware programming}[?]. As with
+% location transparency, the evidence of the relative merits of
+% resource-aware programming, remains anecdotal.
+% 
+% \begin{research-question}[Resource-Aware Programming]
+% 
+% How does resource awareness contribute to the eloquence of a
+% programming technology for a distributed cloud?
+% 
+% \end{research-question}
+% 
+% Although resource-aware programming is an active area of research, it
+% tends to focus on enabling programmers to write application components
+% that do not exceed certain resource limits. Another approach is to let
+% programmers roam free, but constrain their components, and provide
+% handlers for when they fail to meet those constraints. Hence, the
+% runtime would forcefully suspend the offending components, and refer
+% to the handlers until further notice.
+% 
+% I conjecture that this sort of ``resource-constrained programming''
+% could fit naturally in a programming technology for distributed
+% systems. Here, it is already natural to program with timeouts, to
+% address the unreliable nature of networks of computers.  We could
+% treat a component that exceeds the resources available to it, as a
+% component that has ``unexpectedly'' become unavailable.
+% 
+% \begin{research-question}[Resource-Constrained Programming]
+% 
+% How does resource-constrained programming contribute to the eloquence
+% of a programming technology for a distributed cloud?
+% 
+% \end{research-question}
+% 
+% Sub-hypothesis \ref{hyp:move} also refers to an ability that we have
+% seen in programming languages for distributed systems before[?]. Here,
+% programmers are given primitives that allow them to guide the runtime
+% on when and where to move data and computation.
+% 
+% \begin{research-question}[Directed Mobility]
+% 
+% How does having the ability to direct the mobility of data and
+% computation contribute to the eloquence of a programming technology
+% for a distributed cloud?
+% 
+% \end{research-question}
+% 
+% Overall, resource-aware and resource-constrained programming, and
+% directed mobility, adequately combined, can also address
+% sub-hypothesis \ref{hyp:heterogeneity}. Truly eloquent programming for
+% a distributed cloud however, may require a non-trivial combination of
+% the above design principles. The above research questions separate
+% them out however, to highlight the importance of investigating the
+% relative merits of each one individually.
+% 
+% \subsection{Scientific Challenges}
+% 
+% \label{sec:scientific-challenges}
+% 
+% \begin{scientific-challenge}
+% 
+% Evaluate the eloquence of a programming technology.
+% 
+% \end{scientific-challenge}
+% 
+% % \begin{enumerate}
+% 
+% % \item Programming technology tends to mature without a scientific
+% % regard for human factors. As we begin to question this, we are faced
+% % with the fact that mature programming technology can be easier to
+% % learn and employ due to an overabundance of readily available training
+% % material.
+% 
+% % This however, does not mean that programmers trained in this
+% % technology will quickly deliver useful, maintainable, or largely
+% % error-free applications in any particular domain.
+% 
+% % \item Programming technology tends to evolve in a particular social
+% % context. While it may grow to become eloquent in that context,
+% % it may not appear so in a different one. That appearance might, or
+% % might not be justified.
+% 
+% % For instance, a programming technology might have gone out of favor,
+% % but if endowed with another name, more timely syntax, and training
+% % material, it might prove eloquent in a more contemporary social
+% % context.
+% 
+% % \item Replication
+% 
+% % \end{enumerate}
+% 
+% 
+% 
+% \subsection{Status Regarding Reaching Beyond State-of-the-Art}
+% 
+% \begin{itemize}
+% 
+% \item Identified mobility-oriented programming as a programming
+% paradigm.
+% 
+% \item Re-implemented Emerald to have:
+% 
+% \begin{itemize}
+% 
+% \item Flexible compiler architecture, to make it straight-forward to
+% experiment with novel and alternative syntax and semantics.
+% 
+% \item BEAM as a back-end.
+% 
+% \end{itemize}
+% 
+% \end{itemize}

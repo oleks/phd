@@ -1,0 +1,198 @@
+\documentclass[a4paper]{article}
+
+\usepackage{template}
+
+\usepackage{pdfpages}
+
+\usepackage[defernumbers=true, datamodel=archiving]{biblatex}
+\input{archiving.lbx}
+
+% Be more permissive about line breaks in URLs in the bibliography:
+% Credit: https://tex.stackexchange.com/a/134281
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
+\DeclareBibliographyCategory{formally-peer-reviewed}
+\addtocategory{formally-peer-reviewed}{%
+  1973-Actors,%
+  1984-Linda-and-Friends,%
+  emerald:tocs:1988,%
+  emerald:tse:1987,%
+  emerald:spe:1991,%
+  1998-KLAIM,%
+  1998-Understanding-code-mobility,%
+  2000-QuickCheck,%
+  2002-web-based,%
+  2004-Context-Awareness-Mobility,%
+  2006-Telecoms-QuickCheck,%
+  2008-Greening-the-Internet,%
+  2009-The-Case-for-VM-Based-Cloudlets,%
+  2010-staking-claims,%
+  2011-Distributed-Cloud,%
+  2011-Validity-and-reliability-in-social-research,%
+  2011-Mind-your-language,%
+  2012-Fog-Computing-and-Its-Role-in-IoT,%
+  2013-mobile-computation-offloading,%
+  2013-MCC-A-Survey,%
+  2013-Stefik-Siebert-Syntax,%
+  2014-A-Survey-of-MCC-Application-Models,%
+  2014-Jordan,%
+  2015-Borg,%
+  2015-Rebooting-MOOC-Research,%
+  2016-43-Years-of-Actors,%
+  2016-Assessing-the-gold-standard,%
+  2016-Fog-Computing-May-Help-to-Save-Energy-in-Cloud-Computing,%
+  2016-Programmers-Are-Users-Too,%
+  2017-Greening-IoT-with-Fog,%
+  2017-Methodological-Irregularities-in-PL-Research,%
+  2018-Survey-on-MEC-for-IoT-Realization,%
+  2018-Interdisciplinary-PL-Design,%
+  2018-MAGA,%
+  2018-Understanding-and-misunderstanding-RCTs,%
+}
+
+\DeclareBibliographyCategory{phd-theses}
+\addtocategory{phd-theses}{%
+  2003-PhD-Armstrong,%
+  2020-Edge-Computing-for-Extreme-Reliability-and-Scalability,%
+  2020-PhD-User-Centerd-Design-of-Principled-PL,%
+}
+
+\DeclareBibliographyCategory{books}
+\addtocategory{books}{%
+  2007-Guide-to-Advanced-Empirical-SE,%
+  2008-Seven-Rules-for-Social-Research,%
+  2013-HCI-An-Empirical-Research-Perspective,%
+  2020-5g-systems-approach,%
+}
+
+\DeclareBibliographyCategory{reports}
+\addtocategory{reports}{%
+  2015-Distributed-Cloud-Dagstuhl,%
+  2015-ETSI-MEC-A-key-tech-towards-5G,%
+  ericsson-mobrep-2019-wef,%
+  2018-Ericsson-TechReview-Distributed-Cloud,%
+  2019-ETSI-Developing-Software-for-MEC,%
+}
+
+\DeclareBibliographyCategory{media}
+\addtocategory{media}{%
+  2016-MEC-An-important-ingredient-of-5G-networks,%
+  2016-TelecomTV-MEC,%
+  2016-Central-office-re-architectured-as-a-data-center,%
+  economist2018cars,%
+  economist2017drones,%
+  economist2017jets,%
+  ng2017smartfarming,%
+  spiegel2016industrie,%
+  spiegel2017industrie,%
+}
+
+\addbibresource{references.bib}
+
+\usepackage[numbib]{tocbibind}
+
+\header{%
+  course={PhD Project 3rd Semester Status Report},%
+  assignment={Mobility-Oriented Programming},%
+  subAssignment={A Programming Paradigm for Distributed Mobile Clouds},%
+  authors={Oleks Shturmov \texttt{<\href{mailto:oleks@oleks.info}{oleks@oleks.info}>}},%
+  affiliation={Department of Informatics\\University of Oslo},%
+  shortAffiliation={IFI/UiO},%
+  date={December 9, 2020}
+}
+
+\newcommand\tm[0]{\textsuperscript{\scriptsize\texttrademark}}
+\newcommand\longref[1]{\ref{#1} (page \pageref{#1})}
+
+\usepackage{etoolbox}
+
+\newtheorem{definition}{Definition}
+
+\newtheorem{hypothesis}{Hypothesis}
+
+\newtheorem{conjecture}{Conjecture}
+
+\newtheorem{research-aim}{Research Aim}
+
+\newtheorem{research-objective}{Research Objective}
+
+\newtheorem{scientific-challenge}{Scientific Challenge}
+
+\newtheorem{research-question}{Research Question}
+
+\makeatletter
+\renewcommand\tableofcontents{%
+    \@starttoc{toc}%
+}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+%\input{preface}
+
+\tableofcontents
+
+\pagebreak
+
+\input{introduction}
+
+\input{scientific-challenges}
+
+\input{research-questions}
+
+\input{status}
+
+\input{scientific-method}
+
+\input{ethics}
+
+\input{changes-in-the-project}
+
+\input{project-plan}
+
+\section*{References}
+
+\nocite{*}
+
+\printbibliography[%
+  title={Formally Peer-Reviewed},%
+  category=formally-peer-reviewed,%
+  heading=subbibliography%
+]
+
+\printbibliography[%
+  title={PhD Theses},%
+  category=phd-theses,%
+  heading=subbibliography%
+]
+
+\printbibliography[%
+  title={Books},%
+  category=books,%
+  heading=subbibliography%
+]
+
+\printbibliography[%
+  title={Reports},%
+  category=reports,%
+  heading=subbibliography%
+]
+
+\printbibliography[%
+  title={Media},%
+  category=media,%
+  heading=subbibliography%
+]
+
+\pagebreak
+
+\appendix
+
+\input{appendix/terminology}
+
+\input{appendix/nsd-draft}
+
+\end{document}

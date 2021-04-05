@@ -1,0 +1,215 @@
+\section{Research Questions and Scientific Challenges}
+
+\subsection{Scientific Challenges}
+
+\label{sec:scientific-challenges}
+
+The first obvious challenge is to:
+
+\begin{scientific-challenge} \label{challenge:hypotheses}
+
+Formulate scientifically verifiable hypotheses as to the key elements
+of eloquence when programming for distributed mobile clouds.
+
+\end{scientific-challenge}
+
+This is a challenge because distributed mobile cloud computing is in
+its infancy. At least, in the sense that there isn't an overabundance
+of mature, widely adopted applications, open to scrupulous analyses of
+their source code revisions, and bug databases. Furthermore, it is not
+straight-forward to interview a representative sample of industry
+experts, given the resources available to this project. Of course, we
+can leverage the body of hypotheses prevalent in ongoing experimental
+work in distributed mobile cloud computing, and distributed computing,
+in general. However, since empirical evaluation of eloquence is not
+prevalent throughout, these hypotheses may need to be substantially
+revised.
+
+\bigskip
+
+Having formulated such hypotheses, we need to evaluate them
+scientifically. Since eloquence is a social aspect, it is best to
+apply evaluation methods most prevalent in the social sciences. When
+applying such methods, it is important to remain vigilant of the many
+potential threats to the reliability and validity of their
+results\cite{2011-Validity-and-reliability-in-social-research}. The
+following discusses some of them.
+
+% \begin{scientific-challenge}
+
+% Devise means to scientifically evaluate the hypotheses relating to the
+% eloquence of programming paradigms, while characterising and guarding
+% against potential threats to the reliability and validity of such
+% evaluations.
+
+% \end{scientific-challenge}
+
+% % There are two main categories of methods in the social
+% % sciences---observational and experimental studies.  In observational
+% % studies, we observe, but do not alter the population under study. In
+% % experimental studies, we administer specific treatments in a
+% % controlled fashion, in attempt to measure their effect.
+ 
+Firstly, it is often infeasible to study an entire target population,
+including in our case, and so an initial scientific challenge is to:
+
+\begin{scientific-challenge}\label{challenge:representative-sample}
+
+Gather representative samples of the distributed mobile cloud
+programmer population, willing to participate in studies.
+
+\end{scientific-challenge}
+
+Furthermore, cultures evolve, populations change, and so social
+aspects tend to vary over
+time\cite{2008-Seven-Rules-for-Social-Research}. This is true for
+programmer culture as well\footnote{For instance, the syntax of
+popular languages today differs substantially from the syntax of
+popular languages a decade ago.}. Hence, another threat to reliability
+and validity stems from working with temporally unstable hypotheses,
+or not having a way to test the ``liveness'' of a hypothesis in
+different social settings.
+
+\begin{scientific-challenge}\label{challenge:change}
+
+Formulate strategies for verifying that the above hypotheses still
+hold in different social settings, and how to spot when they don't.
+
+\end{scientific-challenge}
+
+Another major threat to validity in the social sciences are
+confounding factors. This is when factors which we fail to observe, or
+control for, happen to be the true cause of particular outcomes.
+
+Perhaps the most prevalent approach to try and mitigate for
+confounding factors in the social sciences is to conduct randomized,
+controlled trials (RCTs)\cite{2016-Assessing-the-gold-standard,
+2018-Understanding-and-misunderstanding-RCTs}. The approach, briefly,
+is to randomly split a large population sample, into a control and
+treatment group.  Subject to the hypothesis that a particular
+treatment has a particular effect on the target population, the
+treatment is administered to the treatment group, but not to the
+control group. If we subsequently observe the hypothesized effect in
+the treatment group, but not in the control group, then this increases
+the credibility of the hypothesis.
+
+Randomization however, does not guarantee freedom from confounding
+factors---it merely increases the chance of such freedom. Although we
+can repeat RCTs, and use larger population samples; it is best to
+combine RCTs with other observational studies to ensure
+credibility\cite{2018-Understanding-and-misunderstanding-RCTs}. 
+
+Controlled trials, are complicated when dealing with complex
+treatments, such as alternative programming paradigms. A programming
+paradigm is a mental tool, often greater than the sum of its parts,
+used by programmers to conduct creative work. Although randomization
+can mitigate for differences in programmer motivation, programmer
+efficiency still depends on such ``mundane''\footnote{Often unrelated
+to the programming paradigm itself.} things as
+syntax\cite{2013-Stefik-Siebert-Syntax}, quality of error
+messages\cite{2011-Mind-your-language}, availability of documentation,
+and (community) support. It would be ill-advised to directly compare
+programming paradigms that differ by such unrelated factors.
+Controlling for them, demands that we develop specialized programming
+environments for use in our experiments.
+
+\begin{scientific-challenge} \label{challenge:apparatus}
+
+Develop experimental apparatus, in the form of specialized programming
+environments, for conducting experiments on human programmers,
+including randomized, controlled trials, to evaluate the hypotheses
+above.
+
+\end{scientific-challenge}
+
+Use of specialized programming environments, would usually require
+additional programmer training, as part of the experiment. Differences
+in instruction are another common source of differences in programmer
+efficiency. Hence, it is important that the instruction given to the
+control group differs from the instruction given to the treatment
+group in a controlled way.
+
+\begin{scientific-challenge} \label{challenge:teaching-aids}
+
+Develop teaching aids to ensure consistent programmer training, except
+where differences in the training of the treatment and control groups
+are demanded by the experiment.
+
+\end{scientific-challenge}
+
+% Observational studies tend to be more prone to such confounding
+% factors, since they can only rely on expert knowledge. Experimental
+% studies can try to remedy for this by resorting to
+% \emph{randomized}, controlled trials (RCTs). For instance, where the
+% population sample is randomly split into a treatment and a control
+% group, with only the former being administered a treatment. By
+% assigning individuals to these groups at random, we increase our
+% chances to not fall prey to some confounding factors which we failed
+% to control for.
+
+% After an initial success in medicine, randomized, controlled trials
+% (RCTs) seem to be well on their way to becoming a ``gold
+% standard''\cite{2016-Assessing-the-gold-standard} in the social
+% sciences as well\cite{2018-Understanding-and-misunderstanding-RCTs}.
+
+% Overall, this project involves both exploratory research, and
+% confirmatory research. Such a distinction can be drawn between
+% Research Objective 1 and Research Objectives 2--4.
+
+% The trouble with doing exploratory research in matters pertaining to
+% social aspects (e.g., eloquence), is how to study a sufficiently
+% representative sample of the target population. Distributed mobile
+% cloud computing is in its infancy.Whatever
+% distributed mobile cloud applications there are, are themselves
+% experimental.
+
+% Distributed mobile cloud applications are in their infancy.
+
+% Neither is it straight-forward to interview a
+% representative sample of industry experts, given the resources
+% available to this project.
+
+% To identify eloquent programming techniques for distributed
+% mobile clouds in a scientific manner, we must adopt an exploratory
+% research methodology:
+
+% Having formulated such hypotheses, we can evaluate their validity
+% through empirical evaluation with human programmers.
+
+% Having formulated such hypotheses, we need to evaluate their
+% validity empirically. For instance, using of \emph{rapid
+% prototyping}, \emph{A/B-testing}, and \emph{discount usability
+% evaluation}\cite{2016-Programmers-Are-Users-Too}, and
+% \emph{randomized controlled trials}. Each such empirical evaluation
+% would involve roughly the following steps:
+
+% \begin{enumerate}
+
+% \item Draw a sample of the distributed mobile cloud programmer population.
+
+% \item Divide the population randomly into equally-sized groups.
+
+% \item Hand each group, each their own variant of otherwise the same
+% programming technology, the variants varying only in the elements
+% under test.
+
+% \item Pose equivalent programming problems, which might elucidate the
+% eloquence/ineloquence of the various variants.
+
+% \item Compare the eloquence with which the groups solve the given
+% problems.
+
+% \end{enumerate}
+
+% Taking this approach means that we cannot immediately use existing
+% programming technology that supposedly provides an element of
+% eloquence, and compare it with technology that supposedly does not.
+% Existing programming technologies may vary in many more factors, than
+% the way in which that they address a particular element of eloquence.
+% They may vary in popularity, maturity, availability and quality of
+% documentation, training material, etc. We must control for all these
+% factors to arrive at some scientifically valid distinctions.
+
+% The obvious way to do so is to re-implement, and mask existing
+% programming technology, to provide new documentation, new training
+% material.

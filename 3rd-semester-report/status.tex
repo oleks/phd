@@ -1,0 +1,71 @@
+\subsection{Status regarding reaching beyond the state of the art}
+
+The onset for this project was to explore what the ideas inherent in
+the Emerald programming language\cite{emerald:tocs:1988,
+emerald:tse:1987, emerald:spe:1991} might be good for today, and
+looking into the future. Emerald is a general purpose programming
+language, devised in the early 1980s in an academic attempt to address
+the challenges inherent in programming distributed systems, as they
+were projected to be at the time. Emerald has since gained little
+adoption, beyond small academic circles.
+
+I have identified ``mobility-oriented programming'' as the general
+programming paradigm first embodied by the Emerald programming
+language. This paradigm contrasts itself with what might be called
+``message-oriented programming'', such as embodied by the actor
+model\cite{1973-Actors, 2016-43-Years-of-Actors}, and the Erlang
+programming language\cite{2003-PhD-Armstrong}, and ``tuple-space
+programming'', such as embodied by the Linda programming
+language\cite{1984-Linda-and-Friends}: In mobility-oriented
+programming, programmers are more concerned with the mobility of
+system objects, and less, or equally, concerned about the
+communication among those objects.
+
+Mobility-oriented programming is suitable in a domain where system
+objects will naturally move about, and it is important to control
+their mobility to ensure some intended functioning of the application.
+I have identified distributed mobile clouds as one suitable domain
+of applications for such a programming paradigm. See the introduction
+for a discussion of this domain.
+
+To scientifically evaluate in-how-far such a programming paradigm is
+suitable for this domain, I have formalised\footnote{In the social,
+rather than mathematical sense of this word.} the notion of
+programming paradigm eloquence, and designed a methodology for
+evaluating it (see also Section \ref{sec:scientific-method}).
+
+To technically enable such evaluations, I have begun work to
+implement:
+
+\begin{enumerate}
+
+\item A modern Emerald compiler, affording experimentation with more
+modern syntax for Emerald, and better error messages.
+
+\item A modern Emerald runtime on top of BEAM, a popular Erlang
+Runtime System implementation. This would allow us to run Emerald code
+on-par with Erlang code.
+
+\end{enumerate}
+
+\subsubsection{Publications (and lack thereof)}
+
+In order to canvas cutting edge approaches to connecting heterogeneous
+components (Research Question 3), I have devised a novel
+``Interconnecting Code Workshop'' at the <Programming>
+conference\footnote{\url{https://programming-conference.org/}}. I have
+organized two iterations of the workshop in
+2019\footnote{\url{https://2019.programming-conference.org/track/icw-2019-papers}}
+and
+2020\footnote{\url{https://2020.programming-conference.org/home/icw-2020}},
+together with my main advisor, Eric Jul. This serves as proof of the
+scientific relevance of Research Question 3.
+
+I have also had a talk approved at another workshop at the
+<Programming> 2020 conference, namely MoreVMs'20 --- Workshop on
+Modern Language Runtimes, Ecosystems, and VMs. The talk was entitled
+``Towards Modern Runtime Support for an Object-Based Distributed
+Programming Language'' and I submitted an
+abstract\footnote{\url{https://2020.programming-conference.org/details/MoreVMs-2020-papers/9/Towards-Modern-Runtime-Support-for-an-Object-Based-Distributed-Programming-Language-}}.
+However, I did not give the talk due to circumstances related to
+COVID-19. 

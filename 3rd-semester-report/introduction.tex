@@ -1,0 +1,405 @@
+\section{Introduction}
+
+\subsection{Project and Scientific Background}
+
+Computing is broadly applicable, in diverse physical environments.
+
+Recent advances in computer architecture, computer networks, and
+battery technology, have enabled a proliferation of versatile,
+physically mobile, Internet-enabled, computational devices. These
+devices collect swathes of data about their surrounding environment,
+and increasingly act upon it. Although smartphones are a prime
+example, ongoing automation is putting ever more of these devices in
+the air\cite{economist2017drones}, on the
+roads\cite{economist2018cars}, on factory
+floors\cite{spiegel2016industrie, spiegel2017industrie}, in the
+fields\cite{ng2017smartfarming}, and into
+workshops\cite{economist2017jets}.
+
+Consequently, there are perpetually growing demands for rich digital
+services, delivered at low latencies, to devices moving about in
+diverse physical environments. These demands have thus far been met by
+improving the computational capabilities of the physically mobile
+devices, improving (mobile) network performance, and by having elastic
+computational resources at centralized server farms (i.e., cloud
+computing).
+
+However, it remains prohibitively more expensive to move data over
+physical distances, than to perform computation itself. Substantial
+gains remain to be leveraged by fundamentally reducing the physical
+distances that data must travel. Clearly, many digital services demand
+that some data be exchanged over some physical distances.
+Never-the-less, a substantial amount of time, wide-area network
+traffic, and ultimately, energy, is
+wasted\cite{2008-Greening-the-Internet,
+2015-Distributed-Cloud-Dagstuhl,
+2016-Fog-Computing-May-Help-to-Save-Energy-in-Cloud-Computing,
+2017-Greening-IoT-with-Fog}, by concentrating computational resources
+at physically centralized locations.
+
+Wide-ranging physical requirements inhibit substantial expansion of
+the computational capabilities of the physically mobile devices
+themselves --- they must often be small in form factor, light on
+weight, and powered by batteries.
+
+% Perhaps a more readily available solution is to provision elastic
+% computational resources at more diverse, yet fixed physical locations.
+% For instance, our modern digital lifestyle is supported by a large
+% number of heterogeneous, networked\footnote{Possibly, but not
+% necessarily Internet-enabled.} devices, strategically positioned at
+% fixed physical locations. For example, cell-phone towers, telco
+% central
+% offices\cite{2016-Central-office-re-architectured-as-a-data-center},
+% WiFi-hotspots, network switches and routers.  These devices are
+% subject to far less stringent physical requirements, having fixed
+% power supplies and wired network connections.
+
+% Historically, these devices have used specialized software and
+% hardware. However, this approach has proven hard sustain.
+
+% These devices have historically used specialized hardware, and
+% software. However, we have grown to realize that this is expensive to
+% maintain, especially in the light of dynamic network loads, and that
+% there are large business opportunities in 
+
+% this is subject to change with the advent 5G mobile
+% networking, and Software-Defined Networking. Increasingly, 
+
+% Possible locations include cell-phone towers, telco central
+% offices\cite{2016-Central-office-re-architectured-as-a-data-center},
+% factories, office buildings, transport hubs, libraries, retailers,
+% restaurants, cafés, bars, etc.
+
+% When a physically mobile device is in need of more computational
+% resources, it can refer to some physically closest provider, rather
+% than a far-away central server.
+
+A more readily available solution is to provision elastic
+computational resources at more diverse physical locations. Elements
+of this solution have been considered broadly over the past decade, in
+both academia and
+industry\cite{2018-Survey-on-MEC-for-IoT-Realization,
+2020-Edge-Computing-for-Extreme-Reliability-and-Scalability}. The
+approach has bore many names, with subtle variations, including
+Cloudlets\cite{2009-The-Case-for-VM-Based-Cloudlets}, Fog
+Computing\cite{2012-Fog-Computing-and-Its-Role-in-IoT}, Mobile Cloud
+Computing\cite{2013-MCC-A-Survey}, Mobile Edge
+Computing\cite{2015-ETSI-MEC-A-key-tech-towards-5G}, and most
+recently, Multi-access Edge
+Computing\cite{2016-TelecomTV-MEC}\footnote{See also
+\url{https://www.etsi.org/technologies/multi-access-edge-computing}.}.
+However, the overarching theme has been to deliver on a physically
+distributed cloud infrastructure, rather than a centralized
+one\cite{2011-Distributed-Cloud, 2015-Distributed-Cloud-Dagstuhl,
+2018-Ericsson-TechReview-Distributed-Cloud}, while also supporting the
+physical mobility of devices leveraging such
+infrastructure\cite{2018-MAGA}:
+
+\begin{definition}[Distributed Mobile Cloud]
+
+\label{def:mobile-cloud}
+
+A distributed mobile cloud infrastructure, is a computational
+infrastructure, where elastic computational resources, distributed
+over fixed, but diverse physical locations, cater to physically mobile
+devices.
+
+\end{definition}
+
+To fully leverage the potential benefits of a distributed mobile
+cloud, we must also adapt the way we build applications, to make sure
+that they can thrive in this, much more dynamic execution
+environment\cite{2014-A-Survey-of-MCC-Application-Models,
+2015-Distributed-Cloud-Dagstuhl,
+2019-ETSI-Developing-Software-for-MEC}.
+
+A key distinguishing feature is that it is not known at compile-time
+where it would be most optimal to place each part of an application.
+Optimal placement depends on a multitude of runtime conditions (e.g.,
+the current location, and battery charge of mobile devices; various
+device and network loads). Furthermore, these conditions change
+throughout the lifetime of an application (e.g., mobile devices move),
+and it may prove worthwhile to move parts of the application to new
+locations, at runtime. This calls for a virtualized address space of
+mobile application components, managed in a distributed fashion.
+
+At the same time, component placement cannot be optimal without taking
+the needs of the application into account. For instance, to guarantee
+a certain level of service, some components must remain co-located, or
+maintain some degree of physical proximity, in addition to maintaining
+some computational and networking capabilities.  Deriving such
+constraints is hard to fathom, without involving the programmers. For
+instance, through their use of specialized programming abstractions,
+whereby they provide hints and demands to the runtime, as to what
+should, or should not move; when, where, and why.
+
+Lastly, applications have something to gain from being aware of their
+dynamic operating conditions. For instance, it is common for video
+streaming applications to adjust their video quality to the available
+network bandwidth. Furtermore, isolating resource-heavy components,
+and opportunistically offloading them to other devices, is an active
+area of research\cite{2013-mobile-computation-offloading}.
+
+A programming paradigm that collectively addresses the challenges
+above, may be referred to as a ``mobility-oriented'' programming
+paradigm:
+
+\begin{definition}[Mobility-Oriented Programming]
+
+In a mobility-oriented programming paradigm, an application is
+structured in terms of resource-aware, mobile components, subject to
+programmer-specified mobility strategies and constraints.
+
+\end{definition} 
+
+The notion of mobility-oriented programming is not
+novel\footnote{Although referring to this notion as
+``mobility-oriented programming'' is.}. Elements of it have appeared
+in the past (e.g., \cite{emerald:tocs:1988},
+\cite{1998-Understanding-code-mobility}, \cite{1998-KLAIM},
+\cite{2004-Context-Awareness-Mobility}). Previous work has attempted
+to propose less verbose and less error-prone primitives for
+programming distributed systems in general. However, mobility-oriented
+programming has largely remained dormant over the past decade, as we
+have witnessed an evolution of needs towards distributed mobile
+clouds.
+
+This project rests on a conjecture, that mobility-oriented
+programming, adequately construed, can prove to be an \emph{eloquent}
+programming paradigm for distributed mobile clouds. This conjecture is
+materialized as Hypothesis \ref{hyp:main} on page \pageref{hyp:main}.
+First however, a definition of eloquence:
+
+% During that time, we have witnessed two important developments:
+% First, there has been an evolution of needs towards distributed
+% cloud infrastructures, as outlined above. Second, (centralized)
+% cloud computing has matured, and the need to provide elastic
+% computational resources, in multi-tenant environments (i.e.,
+% centralized server farms), has fueled an evolution of operating
+% system-level virtualization, and the emergence of so-called
+% ``containers''\cite{2015-Borg}: 
+
+% \begin{definition}[Container]
+
+% \label{def:container}
+
+% A container is a collection of OS-level threads, regarded by the
+% operating system as a single logical unit, which may share OS-level
+% resources with the rest of the system, or wield over isolated,
+% virtualized instances of those resources (e.g., process table, file
+% system, network interfaces).
+
+% \end{definition}
+
+% OS-level virtualization can be more light-weight than hardware
+% virtualization. For instance, starting a container is a matter of
+% spawning a collection of threads, and creating virtualized instances
+% of OS-level resources, rather than starting a (virtual) machine, and
+% booting an operating system from scratch.
+
+% Perhaps more importantly, containers offer a more fine-grained
+% systems structuring primitive, than do virtual machines. Unlike a
+% virtual appliance, a container appliance does not need to also house
+% an operating system kernel, and otherwise unrelated operating system
+% resources (e.g., system files).
+
+% These characteristics have led containers to become not only a
+% popular structuring primitive for cloud-based applications, but also
+% an important tool in software development. Programmers can use the
+% same container appliances in development, testing, and production to
+% trivially ensure consistency between these environments; while
+% running fundamentally different operating systems in development,
+% testing, and production. This eliminates differences in operating
+% system, and software configuration as a source of discrepancy
+% between these environments.
+
+% Containerized applications communicate across container boundaries
+% using interprocess communication. For instance, containers resident
+% on the same machine may employ domain sockets, pipes, or message
+% queues, while employing standard Internet protocols over network
+% sockets for communication across (supposed) machine boundaries.
+
+% The use of interprocess communication, allows for containerized
+% applications to be polyglot, where programmers can pick the best
+% programming language for each part of their application. However,
+% this mode of communication can be highly error-prone, as quite
+% often, no static guarantees can be provided across programming
+% language boundaries.
+
+% For all their benefits, containers are not well-braced for
+% distributed clouds. While it is trivial to transfer a container
+% appliance from machine to machine, live container migration remains
+% experimental\footnote{See, for example, \url{https://criu.org/}.}.
+
+\begin{definition}[Eloquence]
+
+\label{def:eloquence}
+
+A programming paradigm is considered eloquent for a particular domain,
+if we can---with reasonable time and effort---train programmers in
+using a programming technology that embodies the paradigm to quickly
+deliver, largely error-free, useful, and maintainable applications
+within the given domain.
+
+\end{definition}
+
+Of course, what may be considered ``reasonable time and effort'', or
+what may be considered a ``quickly delivered'', ``useful'',
+``maintainable'', or even ``largely error-free'' application, are
+almost purely social questions. It follows, that it is best to apply
+methods from social sciences to evaluate eloquence. How does this fit
+in the context of a PhD Project in Computer
+Science\footnote{Recently, a similarly inclined PhD dissertation was
+submitted by Michael J. Coblenz at the Department of Computer Science
+at Carnegie Mellon
+University\cite{2020-PhD-User-Centerd-Design-of-Principled-PL},
+advocating for a user-centered design methodology for principled
+programming languages.}?
+
+Firstly, I believe that eloquence should be put on a more rigorous
+footing to advance the applicability of programming paradigm research
+in practice.  Without evaluations of eloquence, programming paradigms
+are rigorously distinguishable only by their conceptual differences,
+and how efficient their implementations are. However, those seeking to
+reap the benefits of programming paradigm research, typically have a
+particular programmer resource at their disposal. It is rudimentary,
+to try and make the best use of that resource.
+
+Secondly, I believe that eloquence can be put on a more rigorous
+footing, using methods already applied in other fields of Computer
+Science. Empirical evaluation, including evaluation of human (e.g.,
+user, programmer) factors, is today common-place in the fields of
+Human-Computer
+Interaction\cite{2013-HCI-An-Empirical-Research-Perspective} and
+Software Engineering\cite{2007-Guide-to-Advanced-Empirical-SE}. Less
+so in the field of Programming Languages, but this is subject to
+ongoing developments\cite{2010-staking-claims,
+2016-Programmers-Are-Users-Too,
+2017-Methodological-Irregularities-in-PL-Research,
+2018-Interdisciplinary-PL-Design}.
+
+Lastly, well-founded evaluation of eloquence cannot proceed without
+substantial programming efforts. Today, empirical evaluation is seldom
+used to substantiate the design of programming technology. Instead,
+designs tend to be driven by disjointly frantic programmer cultures
+and market demands. Programming technologies, targeting similar
+domains, may well differ in technical maturity, quality of
+documentation, available training resources, etc. This makes them
+ill-equipped for empirical evaluation, as they initially differ by
+many more factors than the factor that we may choose to study.
+Controlled experiments cannot be achieved without substantial masking,
+re-implementation, and re-writing efforts. This is discussed at depth
+in Sections \ref{sec:scientific-challenges} and
+\ref{sec:scientific-method}.
+
+\subsection{Main Research Aims and Objectives}
+
+Resting on the above discussion, the main research aim of this project
+is to:
+
+\label{research-aim}\newcommand{\researchAim}{\begin{research-aim}
+Investigate in-how-far mobility-oriented programming can be an
+eloquent programming paradigm for distributed mobile
+clouds.\end{research-aim}}\researchAim{}
+
+% To that end, 4 support vectors are considered fundamental to a
+% mobility-oriented programming paradigm for distributed clouds:
+
+% \begin{enumerate}[label={(\alph*)}]
+
+% \item \label{aim:location-transparency} That programmers can remain
+% oblivious to the exact location of (parts of) data and computation at
+% runtime.
+
+% \item \label{aim:resources} That program components can maintain a
+% relative capability of retrieving data, and spawning computation at
+% runtime.
+
+% \item \label{aim:move} That programmers have the capability to guide
+% the runtime on when and where it might be best to move data and
+% computation next.
+
+% \item \label{aim:heterogeneity} That data and computation can be
+% spread over heterogeneous devices, having different computational
+% capabilities.
+
+% \end{enumerate}
+
+% The investigation of the relative benefits of each
+% of these forms a separate research objective. 
+
+
+% To get there, we can employ the following research methodology:
+% Begin with an investigation of what makes programming for a
+% distributed cloud ineloquent today. Such an investigation is likely
+% to result in some informal hypotheses. To make those hypotheses
+% concrete, consider a programming technology (or several) that
+% explicitly attempts to address those issues, and one (or several)
+% that does not. Prove, or disprove, the hypotheses by comparing how
+% well programmers fare in solving domain-relevant problems, using the
+% respective programming technologies (e.g., in a randomized
+% controlled trial).
+
+% In such a methodology, achieving the above aim, is a matter of
+% accomplishing the following objectives:
+
+Achieving the above aim is considered to be a manner of accomplishing
+the following objectives:
+
+\begin{research-objective}\label{objective:identify}
+
+Identify key elements of eloquence in programming for a distributed
+mobile cloud.
+
+\end{research-objective}
+
+% For instance, that programmers can remain oblivious to the exact
+% location where a part of their application is executing (i.e.,
+% location transparency), or that they can remain aware of the costs
+% involved in reaching parts of their application (i.e., resource
+% awareness).
+
+Having identified some key elements, we can characterize one, or
+several programming technologies that would provide such elements in
+practice. Subsequently, objectives
+\ref{objective:characterize}--\ref{objective:evaluate} may be
+accomplished one, or several times:
+
+\begin{research-objective}[Repeated] \label{objective:characterize}
+
+Characterize a programming technology that
+provides the elements of eloquence identified above.
+
+\end{research-objective}
+
+Implementations of the characterized programming technology may exist.
+However, they may be outdated, or not suitable for subsequent
+eloquence evaluations---they may be tainted by a range of objectives
+other than simply addressing the particular element of eloquence in
+question.
+
+\begin{research-objective}[Repeated] \label{objective:implement}
+
+Provide an efficient implementation of the programming technology
+specified above, amenable to subsequent eloquence evaluation.
+
+\end{research-objective}
+
+While scientific results are achievable through mere characterization
+and efficient implementation of novel programming technology alone
+(roughly, objectives 2--3), to fully reach the research aim above, we
+must finally also:
+
+\begin{research-objective}[Repeated] \label{objective:evaluate}
+
+Evaluate that the programming technology characterized and implemented
+above enables programmers to eloquently leverage a distributed mobile
+cloud infrastructure.
+
+\end{research-objective}
+
+This last research objective, is expected to result in a considerable
+contribution to the research methodology in programming paradigm
+research. Never-the-less, to showcase a method for scientific
+evaluation of the eloquence of a programming paradigm is not the main
+research aim of this project.
